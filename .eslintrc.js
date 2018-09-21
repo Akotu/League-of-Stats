@@ -1,3 +1,4 @@
 module.exports = {
-    "extends": ["standard", "standard-react"]
+  /* eslint-disable */
+  extends: "standard"
 };

@@ -1,0 +1,72 @@
+body {
+  background-image: url("../../images/leaguebg2.jpg");
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: auto;
+}
+
+.search {
+  font-family: "Julius Sans One", sans-serif;
+  color: #937341;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  line-height: 1;
+  width: 240px;
+  border: none;
+  padding: 23px 0;
+  position: relative;
+  background: linear-gradient(to bottom, #ecc572 0, #815500 100%);
+  z-index: 1;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.11);
+  outline: none !important;
+  margin-top: 25%;
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  color: black;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.search:after {
+  content: "";
+  background: #ecc572;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.search:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+.search:active {
+  outline: none;
+  background: linear-gradient(to bottom, #ecc572 0, #815500 100%);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.11);
+}
+
+.goldlogo {
+  margin-top: 25%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  margin-bottom: 100px;
+}
