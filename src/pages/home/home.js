@@ -8,9 +8,25 @@ import TextField from "@material-ui/core/TextField";
 import SearchBar from "../../components/SearchBar/SearchBar";
 
 class Home extends Component {
-  state = {
-    value: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = { value: "" };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  handleClick(event) {
+    console.log(event.target.value);
+  }
 
   render() {
     return (
@@ -21,7 +37,21 @@ class Home extends Component {
             className="goldlogo"
           />
 
-          <button className="search">Search Summoner</button>
+          <div className="form">
+            <input
+              type="username"
+              value={this.state.value}
+              onChange={this.handleChange}
+              className="searchName"
+            />
+
+            <label className="text" />
+          </div>
+
+          <button className="search" onClick={this.handleClick}>
+            Search Summoner
+          </button>
+          <p className="test">{this.state.value}</p>
         </Grid>
       </DarkWrapper>
     );
