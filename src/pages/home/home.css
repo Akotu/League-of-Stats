@@ -76,7 +76,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   .goldlogo {
-    margin-top: "60%";
+    margin-top: 200px;
     -webkit-transform: scale(2.5);
   }
 }
@@ -131,4 +131,18 @@ body {
   color: #c4b998;
   margin: auto;
   width: 50%;
+}
+.logo {
+  -webkit-transform: scale(0.8);
+  position: absolute;
+  left: 10px;
+  top: -20px;
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .logo {
+    margin-top: 100px;
+    -webkit-transform: scale(0.5);
+  }
 }
