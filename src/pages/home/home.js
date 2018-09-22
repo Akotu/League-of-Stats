@@ -7,11 +7,17 @@ import "./home.css";
 import TextField from "@material-ui/core/TextField";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import logo from "../../images/los2.png";
+import Summoner from "../../components/SummonerAPI/summoner";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+
+    this.state = {
+      value: ""
+    };
+
+    let name = this.state.value;
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,6 +29,7 @@ class Home extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log(name);
   }
 
   handleClick(event) {
@@ -40,6 +47,7 @@ class Home extends Component {
             src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/multistep-signup/en_US/363b6842fb28ecec94c4bcfdb191bf0c402fdfca/assets/img/divider.png"
             className="goldlogo"
           />
+          <Summoner />
           <div className="form">
             <input
               type="username"

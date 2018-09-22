@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import "../../api/league";
+// import "../../api/league";
 
 class Player extends Component {
   constructor(props) {
