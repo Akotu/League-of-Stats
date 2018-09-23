@@ -1,23 +1,13 @@
 /* eslint-disable */
 import React, { Component } from "react";
-require("dotenv").config();
+import SummonerName from "../../components/stats/SummonerName";
+import SummonerLevel from "../../components/stats/SummonerLevel";
+import SummonerID from "../../components/stats/SummonerID";
+import SearchedName from "../../pages/home/searchedName";
 
-const db = require("db");
-
-db.connect({
-  api_key: process.env.api_key,
-  URL: process.env.URL
-});
-
-var apiKey = "RGAPI-f2d59f42-42a1-4499-b6dc-d41195721ef6";
-var s_toSearch = "certatim";
-var URL =
-  "https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/" +
-  s_toSearch +
-  "?api_key=" +
-  apiKey;
-
-//Put Api Key and URL inside of .env then import them
+var apiKey = process.env.REACT_APP_API_KEY;
+var s_toSearch = SearchedName;
+var URL = process.env.REACT_APP_URL + s_toSearch + "?api_key=" + apiKey;
 
 class Summoner extends Component {
   constructor(props) {
@@ -29,47 +19,60 @@ class Summoner extends Component {
       api: {}
     };
   }
-
-  componentDidMount() {
-    fetch(URL)
-      .then(res => res.json())
-      //   .then(res => console.log(res))
-      .then(
-        res => {
-          console.log(res);
-          this.setState(
-            {
+  
+  fetchData = () => {
+    if (/^[0-9\\p{L} _\\.]+$/.test(s_toSearch)) {
+      fetch(URL)
+        .then(res => res.json())
+        //   .then(res => console.log(res))
+        .then(
+          res => {
+            console.log(res);
+            this.setState(
+              {
+                isLoaded: true,
+                api: res
+              },
+              () => {
+                console.log(res.api);
+              }
+            );
+          },
+          error => {
+            this.setState({
               isLoaded: true,
-              api: res
-            },
-            () => {
-              console.log(res.api);
-            }
-          );
-        },
-        error => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      );
-  }
+              error
+            });
+          }
+        );
+    } else {
+      return alert(s_toSearch + "does not meet Leagues name parameters");
+    }
+  };
 
   render() {
-    console.log(this.state.api);
     const { error, isLoaded, api } = this.state;
+    let name = api.name;
+    let sumId = api.id;
+    let level = api.summonerLevel;
+
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-        <ul>
-          <div className="name">{api.name}</div>
-        </ul>
+        <div>
+          <SummonerName sumName={name} />
+          <SummonerLevel sumLevel={level} />
+          <SummonerID sumID={sumId} />
+        </div>
       );
     }
   }
 }
 export default Summoner;
+
+// export function SummonerID(props) {
+//   return <div>{props.id}</div>;
+// }

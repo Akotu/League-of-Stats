@@ -1,5 +1,5 @@
 body {
-  /* background-image: url("../../images/leaguebg2.jpg");
+  background-image: url("../../images/leaguebg2.jpg");
   position: fixed;
   width: 100%;
   height: 100%;
@@ -7,7 +7,7 @@ body {
   background-position: center;
   background-attachment: fixed;
   background-size: cover;
-  overflow: auto; */
+  overflow: auto;
 }
 
 .search {
@@ -82,28 +82,30 @@ body {
 }
 
 .searchName {
-  -webkit-appearance: textfield;
-  background-color: white;
-  -webkit-rtl-ordering: logical;
-  cursor: text;
-  padding: 1px;
-  border-width: 2px;
-  border-style: inset;
-  border-color: initial;
-  border-image: initial;
-  border: none;
-  border-bottom: 1px solid #7e633b;
-  display: block;
-  font-size: 3rem;
-  margin: auto;
-  padding: 4px 0;
-  width: 50%;
-  background: 0 0;
-  text-align: left;
-  outline: 0;
-  color: #c4b998;
-  font-size: 2.5rem;
-  line-height: normal;
+    -webkit-appearance: textfield;
+    background-color: #fff;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    -webkit-border-image: initial;
+    -o-border-image: initial;
+    border-image: initial;
+    border: none;
+    border-bottom: 1px solid #7e633b;
+    display: block;
+    font-size: 3rem;
+    margin: auto;
+    padding: 4px 0;
+    width: 50%;
+    background: 0 0;
+    text-align: left;
+    outline: 0;
+    color: #c4b998;
+    font-size: 2.5rem;
+    line-height: normal;
 }
 
 .searchName:after::before {
@@ -145,4 +147,11 @@ body {
     margin-top: 100px;
     -webkit-transform: scale(0.5);
   }
+}
+
+.stats {
+   
+    font-size: 20px;
+    color:white;
+    width: 100px;
 }
