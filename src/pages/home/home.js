@@ -12,6 +12,8 @@ import SearchedName from "./searchedName";
 import SummonerName from "../../components/stats/SummonerName";
 import SummonerLevel from "../../components/stats/SummonerLevel";
 import SummonerID from "../../components/stats/SummonerID";
+import SummonerRank from '../../components/stats/SummonerRank';
+
 
 class Home extends Component {
   constructor(props) {
@@ -21,14 +23,14 @@ class Home extends Component {
       error: null,
       isLoaded: false,
       api: {},
-      value: ""
+      api2: {},
+      value: "",
+      id: ''
     };
 
     this.apiKey = process.env.REACT_APP_API_KEY;
 
-    this.url = 'https://cors-anywhere.herokuapp.com/'+process.env.REACT_APP_URL;
-
-    this.theState = console.log(this.state.value);
+    this.url = 'https://cors-anywhere.herokuapp.com/' + process.env.REACT_APP_URL;
 
     this.handleChange = this
       .handleChange
@@ -41,8 +43,9 @@ class Home extends Component {
   testData = () => {
     console.log(this.s_toSearch);
   };
+
   fetchData = () => {
-    
+
     if (!/^[0-9\\p{L} _\\.]+$/.test(this.state.value)) {
       fetch(this.url + this.state.value + "?api_key=" + this.apiKey).then(res => res.json())
       //   .then(res => console.log(res))
@@ -50,9 +53,10 @@ class Home extends Component {
         console.log(res);
         this.setState({
           isLoaded: true,
-          api: res
+          api: res,
+          id: res.id
         }, () => {
-          console.log(res.api);
+          console.log(res);
         });
       }, error => {
         this.setState({isLoaded: true, error});
@@ -84,11 +88,13 @@ class Home extends Component {
   }
 
   render() {
+
     const {error, isLoaded, api, value} = this.state;
     let s_toSearch = value
     let name = api.name;
     let sumId = api.id;
     let level = api.summonerLevel;
+
     return (
       <DarkWrapper>
         <Grid>
@@ -97,20 +103,8 @@ class Home extends Component {
           </div>
           <img
             src="https://lolstatic-a.akamaihd.net/frontpage/apps/prod/multistep-signup/en_US/363b6842fb28ecec94c4bcfdb191bf0c402fdfca/assets/img/divider.png"
-            className="goldlogo"/> {/* <Summoner /> */}
-          {/* <form onSubmit={this.handleSearchTermSubmit}> */}
-          {/* <input
-            type="text"
-            ref={input => (this.textInput = input)}
-            value={this.state.value}
-            onChange={this.handleChange}
-            className="searchName"
-          /> */}
-
-          {/* </form> */}
-
+            className="goldlogo"/>
           <form onSubmit={this.handleSubmit}>
-
             <input
               type="text"
               value={this.state.value}
@@ -129,6 +123,7 @@ class Home extends Component {
             <SummonerName sumName={name}/>
             <SummonerLevel sumLevel={level}/>
             <SummonerID sumID={sumId}/>
+
           </div>
         </Grid>
       </DarkWrapper>
